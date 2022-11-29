@@ -4,7 +4,29 @@
 
 This app was created using **Unity** verion **2021.3.4f1**.
 
-The aim was to focuse on mobile devices equiped with touschcreen but due to the Unity's input system, the whole project can be runned on desktop devices too.
+The aim was to focuse on mobile devices equiped with touschcreen. For 
+
+## How to run this game in unity
+
+After compiling of attached scripts is compleated the game is running in the Game window. To allow interaction using your mouse you have to switch to simulator mode using dropdown list selection located in the top left corner of the Game window.
+## Building the game for Android
+
+Fristly you need to switch platform in build settings (edit -> build settings...). Than you have to select mein scene and drag it to the top of the list.
+## Used Packages
+
+|Name   |Author  |version|special requirements|
+|---|---|---|---|
+|- Mobile    |(Unity Technologies)|2.0.1| iOS 10 and Android 4.4 or above|
+|- Post Processing   |(Unity Technologies)|3.2.2| |
+|- Test Framework    |(Unity Technologies)|1.1.31| |
+|- TextMeshPro   |(Unity Technologies)|3.0.6|
+|- Timeline  |(Unity Technologies)|1.6.4| |
+|- Unity UI  |(Unity Technologies)|1.0.0| |
+|- Universal RP  |(Unity Technologies)|12.1.7| |
+|- Version Control   |(Unity Technologies)|1.17.1| |
+|- Visual Scripting  |(Unity Technologies)|1.7.8| |
+|- Visual Studio Code Editor |(Unity Technologies)|1.2.5| |
+
 ## This .gitignore file should be placed at the root of your Unity project directory
 
 /[Ll]ibrary/
