@@ -1,4 +1,8 @@
-# This .gitignore file should be placed at the root of your Unity project directory
+# Mobile Ludum In Spatio Isometric
+
+Tato aplikace byla vytvořena pomocí porgarmu Unity verze 2021.3.4f1 od společnosti Unity Technologies.
+
+## This .gitignore file should be placed at the root of your Unity project directory
 
 /[Ll]ibrary/
 /[Tt]emp/
