@@ -2,7 +2,7 @@
 
 ![alt game screenshoot](gameScreenshoot.png)
 
-This app was created using Unity verion 2021.3.4f1.
+This app was created using **Unity** verion **2021.3.4f1**.
 
 The aim was to focuse on mobile devices equiped with touschcreen but due to the Unity's input system, the whole project can be runned on desktop devices too.
 ## This .gitignore file should be placed at the root of your Unity project directory
