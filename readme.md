@@ -47,7 +47,8 @@ Projects in Unity can also be tested on connected Android devices via USB. For m
 
 ## Building an Android apk <a id = "building"></a>
 
-To build an apk installed Android module is needed. Then can be switched to Android platform in build settings (File -> Build settings). For building apk file following dependences are required.
+To build an apk installed Android module is needed. Then can be switched to Android platform in build settings\
+ (File -> Build settings). For building apk file following dependences are required.
 
 - The Android Build Support module (already mentioned)
 - The Android Software Development Kit (SDK)
