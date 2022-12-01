@@ -11,13 +11,9 @@
 
 ## About <a id = "about"></a>
 
----
-
 Blah... Blah...
 
 ## Getting started <a id = "starting"></a>
-
----
 
 To run this project properly the right one version of Unity technologies Unity is needed. We have been using Unity version **2021.3.4f1**.
 To be able to work properly with this project, Android module should be installed and attached to the installed Unity as well.
@@ -50,8 +46,6 @@ The solution is to test this game in simulator mode in which clicking is handled
 Projects in Unity can also be tested on connected Android devices via USB. For more informations see [Unity remote docs](https://docs.unity3d.com/Manual/UnityRemote5.html).
 
 ## Building an Android apk <a id = "building"></a>
-
----
 
 To build an apk installed Android module is needed. Then can be switched to Android platform in build settings (File -> Build settings). For building apk file following dependences are required.
 
