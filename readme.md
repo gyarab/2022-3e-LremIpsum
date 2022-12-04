@@ -11,7 +11,7 @@
 
 ## About <a id = "about"></a>
 
-Blah... Blah...
+Our project aims to create a mobile game with underlaying story. The game will be mainly focused on the puzzles that create individual levels, which will be divided into several different environments; mainly abstract, nature, and architecture. The levels can be manipulated in almost any way imaginable, therefore the puzzles can be solved with the use of optical illusions, and hidden features that will create a way through the level that previously didn’t exist. The story will be told mainly through context clues from these puzzles, short cutscenes, and will be largely up to the player’s interpretation. Dialogue will be minimal.
 
 ## Getting started <a id = "starting"></a>
 

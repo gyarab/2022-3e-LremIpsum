@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class SaveLevel : MonoBehaviour
 {
-    /*public script MoveableObjects;*/
-
+    public GameObject[] movingObjects;
    public static void save(){
    }
     void Start()
     {
-        
     }
 
     // Update is called once per frame
