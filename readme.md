@@ -6,7 +6,7 @@
 
 1) [About](#about)
 2) [Getting Started](#starting)
-3) [Usage](#useage)
+3) [Usage](#usage)
 4) [Building an apk](#building)
 
 ## About <a id = "about"></a>
@@ -35,7 +35,7 @@ To open this project after downloading it, locate the root directory of this pro
 |- Visual Scripting  |(Unity Technologies)|1.7.8| |
 |- Visual Studio Code Editor |(Unity Technologies)|1.2.5| |
 
-## Useage <a id = "useage"></a>
+## Usage <a id = "usage"></a>
 
 To be able to run and test this game in editor it is good to know this project was intended to work on devices equpped with touch screens. Standard Game window, where projects are usually running, does not count clicking as touches. The onTouch function is triggered but Unity does not in this mode provide further inforamtion about the touch. That leads to an error when trying to access that data.
 
