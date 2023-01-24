@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Button = UnityEngine.UI.Button;
+
 
 public class TlacitkoAnimace : MonoBehaviour
 {
-    public Button bt;
+    public UnityEngine.UI.Button bt;
     public GameObject animovany;
     private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         anim = animovany.GetComponent<Animator>();
-        //bt.onClick.AddListener(TaskOnClick);
+        bt.onClick.AddListener(TaskOnClick);
     }
 
     // Update is called once per frame

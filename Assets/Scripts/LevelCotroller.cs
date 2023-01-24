@@ -70,20 +70,20 @@ public class SpecialConnection
 public class LevelCotroller : MonoBehaviour
 {
     // Vstupn? data z inspektoru
-    [Header("M?sto, kde se objev? hr?è po  naèten? levelu")]
+    [Header("Místo, kde se objeví hr? po na?tení levelu")]
     [Space]
     public GameObject playerPosition;
 
-    [Header("Tlaè?tka k pohybu")]
+    [Header("Seznam dlaždic jako tla?ítek")]
     [Space]
-    [Header("Konec smyèky se oznaè? vložen?m pr?zdn?ho elementu do pole.")]
+    [Header("Konec smy?ky se ozn?í vložením prázdného elementu do pole.")]
     public GameObject[] buttons;
 
     [Header("Odkaz na GameObject se skripty SpecialConnections pro tento level")]
     [Space]
     public GameObject specialConnectionsManager;
 
-    [Header("ID okolnost? a p?edem dan? hodnoty:")]
+    [Header("ID spojení na které odkazuje skript SpecialConnection:")]
     public bool[] IDOkolnosti;
 
     ArrayList points = new ArrayList();

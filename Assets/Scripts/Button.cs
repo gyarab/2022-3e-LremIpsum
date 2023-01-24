@@ -6,7 +6,7 @@ public class Button : MonoBehaviour
 {
     public GameObject click;
     public Point point = null;
-    [Header("Jde o speciální sousedství")]
+    [Header("Jde o speciální sousedství [Zastaralé nepoužívat, ale m?lo by stále fungovat]")]
     public int id = 0;
     public float speed = 0;
     public GameObject direction = null;

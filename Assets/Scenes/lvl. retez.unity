@@ -4884,6 +4884,7 @@ GameObject:
   - component: {fileID: 1254321455}
   - component: {fileID: 1254321454}
   - component: {fileID: 1254321456}
+  - component: {fileID: 1254321457}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -5003,6 +5004,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate: {fileID: 2547820308617658764}
   slider: {fileID: 2923194370022074415}
+--- !u!114 &1254321457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254321453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8b447e3b1cf9a4a81064b55b7d64eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingObjects: []
 --- !u!1 &1281313410
 GameObject:
   m_ObjectHideFlags: 0

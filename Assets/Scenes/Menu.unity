@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02d44e9ed78d404a8a395ae0628e015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bt: {fileID: 0}
+  bt: {fileID: 440278421}
   animovany: {fileID: 238054503}
 --- !u!95 &440278425
 Animator:
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 895551527}
-  Bloom: 35.1
+  Bloom: 24
   Vignette: 0.378
   ColorGrading: 0
 --- !u!1001 &902071814
