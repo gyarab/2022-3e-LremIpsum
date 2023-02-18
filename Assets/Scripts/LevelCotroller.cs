@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Point
 {
@@ -10,7 +12,7 @@ public class Point
     public int id;
     public GameObject button = null;
     public bool navstiveno = false;
-    public int idSpecalny = -1; // -1 -> Nejedn? se o speci?ln?
+    public int idSpecalny = -1; // -1 -> Nejedná se o specální
     public ArrayList cesta;
     public Point(GameObject butt)
     {
@@ -69,7 +71,7 @@ public class SpecialConnection
 }
 public class LevelCotroller : MonoBehaviour
 {
-    // Vstupn? data z inspektoru
+    // Vstupní data z inspektoru
     [Header("Místo, kde se objeví hr? po na?tení levelu")]
     [Space]
     public GameObject playerPosition;
@@ -87,9 +89,19 @@ public class LevelCotroller : MonoBehaviour
     public bool[] IDOkolnosti;
 
     ArrayList points = new ArrayList();
-    // Vytvo?en? grafu z informac? zadan?ch do LevelController
+
+
+    // Saving level data variables
+    [Space]
+    [Header("Ukládání progresu ve h?e")]
+
+    public bool autoSave = true;
+    ArrayList moveableComponents = new ArrayList();
+    public float[] additionalData = {};
+    
     void Start()
     {
+        // Vytvo?ení grafu z informací zadaných do LevelController
         GameObject pre = null;
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -187,6 +199,16 @@ public class LevelCotroller : MonoBehaviour
                 break;
             }
         }
+
+        // Získání dat pro ukládání a na?ítání levelu
+        if(autoSave){
+            MoveableController[] saveMoveable = GameObject.FindObjectsOfType<MoveableController>();
+            for(int i = 0;i < saveMoveable.Length;i++){
+                moveableComponents.Add(saveMoveable[i].gameObject);
+            }
+        }
+        load();
+        InvokeRepeating("save", 20, 20);
     }
 
     // Test kliknut?
@@ -204,6 +226,109 @@ public class LevelCotroller : MonoBehaviour
                    hit.transform.gameObject.SendMessage("clicked");
                 }
             }
+        }
+    }
+    
+    public void save(){
+        TransformSerializable positionRotationSerialize(GameObject input){
+            Transform tr = input.transform;
+            TransformSerializable returnVal = new TransformSerializable(tr.localPosition.x, tr.localPosition.y, tr.localPosition.z,
+            tr.localRotation.eulerAngles.x, tr.localRotation.eulerAngles.y, tr.localRotation.eulerAngles.z);
+            return returnVal;
+        }
+        if(autoSave){
+            GameObject player = GameObject.Find("Player");
+            Player playerScript = (Player)player.gameObject.GetComponent("Player");
+            LevelCotroller lc = (LevelCotroller)Object.FindObjectOfType(typeof(LevelCotroller));
+            GameObject camera = GameObject.Find("Main Camera");
+            
+            // -------------    Data, která se budou ukládat
+            // Název levelu, ve kterém se hrá? nyní nachází
+            string sceneName = SceneManager.GetActiveScene().name;
+            // Hrá?
+            TransformSerializable playerPosition = positionRotationSerialize(player);
+            //GameObject playerParent = playerScript.parent;
+            Point currPos = Player.currentPlayerPoint;
+            ArrayList map = Player.mapa;
+            int currPlayerPosId = -1;
+            for(int i=0;i<map.Count;i++){
+                if(map[i] == currPos){
+                    currPlayerPosId = i;
+                    break;
+                }
+            }
+            // Level Controller
+            
+            bool[] idOkolnosti = lc.IDOkolnosti;
+            // Camera
+            TransformSerializable cameraPosition = positionRotationSerialize(camera);
+            // Moveable components
+            TransformSerializable[] moveableComponentsPosition = new TransformSerializable[moveableComponents.Count];
+            for(int i = 0;i < moveableComponents.Count;i++){
+                moveableComponentsPosition[i] = positionRotationSerialize((GameObject)moveableComponents[i]);
+            }
+
+            SaveData saveData = new SaveData(sceneName,playerPosition,currPlayerPosId,idOkolnosti,
+                    cameraPosition,moveableComponentsPosition,additionalData);
+
+            if (!Directory.Exists(GlobalVariables.savedirectoryName))
+            Directory.CreateDirectory(GlobalVariables.savedirectoryName);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream saveFile = File.Create(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin");
+
+        formatter.Serialize(saveFile, saveData);
+
+        saveFile.Close();
+        //print("Game Saved to " + Directory.GetCurrentDirectory().ToString() + "/Saves/" + GlobalVariables.saveName + ".bin");
+        Debug.Log("Game saved");
+        }
+    }
+
+    public void load(){
+        void setTransform(GameObject obj, TransformSerializable tr){
+            obj.transform.localEulerAngles = new Vector3(tr.rx, tr.ry, tr.rz);
+            obj.transform.localPosition = new Vector3(tr.px, tr.py, tr.pz);
+        }
+        if(autoSave && System.IO.File.Exists(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            FileStream loadFile = File.Open(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
+
+            SaveData loadData = (SaveData) formatter.Deserialize(loadFile);
+
+            // Setting the data to the game
+            setTransform(GameObject.Find("Player"), loadData.playerPosition);
+            if(loadData.idOfPointPlayerIsStandingOn != -1){
+                Player.currentPlayerPoint = (Point)Player.mapa[loadData.idOfPointPlayerIsStandingOn];
+            }
+            IDOkolnosti = loadData.idOkolnosti;
+            setTransform(GameObject.Find("Main Camera"), loadData.cameraPosition);
+            // Seting position of moveable compnents
+            for(int i = 0;i<loadData.moveableComponentsPosition.Length;i++){
+                setTransform((GameObject)moveableComponents[i], loadData.moveableComponentsPosition[i]);
+            }
+            additionalData = loadData.extra;
+            
+            // Print all of the data
+            /*print("~~~ LOADED GAME DATA ~~~");
+            print("Scene name: " + loadData.sceneName);
+            print("Player position");
+            print("X = "+loadData.playerPosition.px);
+            print("y = "+loadData.playerPosition.py);
+            print("z = "+loadData.playerPosition.pz);
+            print("Rotation:");
+            print("X = "+loadData.playerPosition.rx);
+            print("Y = "+loadData.playerPosition.ry);
+            print("Z = "+loadData.playerPosition.rz);
+            print("Player position index:" + loadData.idOfPointPlayerIsStandingOn);
+            print("ID okolnosti");
+            print(IDOkolnosti);
+            print("Number of moveable components: " + loadData.moveableComponentsPosition.Length);
+            print("Test pos. x of first component");
+            print(loadData.moveableComponentsPosition[0].px);*/
+
+            loadFile.Close();
         }
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    public static string menu = "Menu";
-    public static string[] levels = {"1.level"};// Názvy úroví odpovídající názvùm scén ve správném poøadí
+    public static string[] sceneNames;
+    public static string saveName = "savedGame";
+    public static string savedirectoryName = "Saves";
 
     // Start is called before the first frame update
     void Start()
