@@ -1,6 +1,6 @@
 # Mobile Ludum In Spatio Isometric
 
-![alt game screenshoot](imgs/logo lrem Ipsum.png)
+![alt game screenshoot](imgs/logo.png)
 
 ## Table of contents
 
