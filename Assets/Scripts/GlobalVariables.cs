@@ -23,10 +23,10 @@ public class GlobalVariables : MonoBehaviour
         
     }
 
-    public void load(){
-        if(System.IO.File.Exists(savedirectoryName + "/" + saveName + ".bin")){
+    public static void load(){
+        if(System.IO.File.Exists(Application.persistentDataPath+"/"+ savedirectoryName + "/" + saveName + ".bin")){
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream loadFile = File.Open(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
+            FileStream loadFile = File.Open(Application.persistentDataPath+"/"+ savedirectoryName + "/" + saveName + ".bin", FileMode.Open);
             SaveData loadData = (SaveData) formatter.Deserialize(loadFile);
             SceneManager.LoadScene(loadData.sceneName);
             loadFile.Close();

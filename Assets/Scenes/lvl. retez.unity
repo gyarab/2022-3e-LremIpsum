@@ -9126,9 +9126,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
         type: 3}
+      propertyPath: dialog.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
       propertyPath: "aktiva\u010Dn\xEDDla\u017Edice"
       value: 
       objectReference: {fileID: 1035262682}
+    - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
+      propertyPath: dialog.Array.data[1]
+      value: "Druh\xE1 srtana"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
+      propertyPath: dialog.Array.data[2]
+      value: "Stran zde m\u016F\u017Ee b\xFDt\ntolik,\nkolik bude\nt\u0159eba"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
+      propertyPath: dialog.Array.data[3]
+      value: "Ale toto je posledn\xED"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5231867eca22544a6bf53a0068785d, type: 3}
 --- !u!23 &5099648274309273236

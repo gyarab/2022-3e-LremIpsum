@@ -37,7 +37,12 @@ public class TlacitkoAnimace : MonoBehaviour
     IEnumerator loadScene()
     {
         yield return new WaitForSeconds(0.8f);
-        SceneManager.LoadScene(sceneName: "1. level");
+        if(System.IO.File.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
+            GlobalVariables.load();
+        }else{
+            SceneManager.LoadScene(GlobalVariables.sceneNames[0]);
+        }
+        
     }
     IEnumerator fadeToBlack()
     {

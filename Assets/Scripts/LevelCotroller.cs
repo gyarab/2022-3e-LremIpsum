@@ -271,11 +271,11 @@ public class LevelCotroller : MonoBehaviour
             SaveData saveData = new SaveData(sceneName,playerPosition,currPlayerPosId,idOkolnosti,
                     cameraPosition,moveableComponentsPosition,additionalData);
 
-            if (!Directory.Exists(GlobalVariables.savedirectoryName))
-            Directory.CreateDirectory(GlobalVariables.savedirectoryName);
+            if (!Directory.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName))
+            Directory.CreateDirectory(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName);
 
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream saveFile = File.Create(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin");
+            FileStream saveFile = File.Create(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin");
 
         formatter.Serialize(saveFile, saveData);
 
@@ -290,10 +290,10 @@ public class LevelCotroller : MonoBehaviour
             obj.transform.localEulerAngles = new Vector3(tr.rx, tr.ry, tr.rz);
             obj.transform.localPosition = new Vector3(tr.px, tr.py, tr.pz);
         }
-        if(autoSave && System.IO.File.Exists(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
+        if(autoSave && System.IO.File.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
             BinaryFormatter formatter = new BinaryFormatter();
 
-            FileStream loadFile = File.Open(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
+            FileStream loadFile = File.Open(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
 
             SaveData loadData = (SaveData) formatter.Deserialize(loadFile);
 
