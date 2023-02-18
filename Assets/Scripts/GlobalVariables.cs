@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
@@ -20,8 +23,13 @@ public class GlobalVariables : MonoBehaviour
         
     }
 
-    void save()
-    {
-
+    public void load(){
+        if(System.IO.File.Exists(savedirectoryName + "/" + saveName + ".bin")){
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream loadFile = File.Open(GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
+            SaveData loadData = (SaveData) formatter.Deserialize(loadFile);
+            SceneManager.LoadScene(loadData.sceneName);
+            loadFile.Close();
+        }
     }
 }
