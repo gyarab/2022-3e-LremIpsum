@@ -9149,6 +9149,16 @@ PrefabInstance:
       propertyPath: dialog.Array.data[3]
       value: "Ale toto je posledn\xED"
       objectReference: {fileID: 0}
+    - target: {fileID: 4624174196792949615, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624174197661088579, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
+      propertyPath: m_text
+      value: Sample text that can be placed anywhere you want.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5231867eca22544a6bf53a0068785d, type: 3}
 --- !u!23 &5099648274309273236

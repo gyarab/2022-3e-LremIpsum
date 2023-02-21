@@ -99,6 +99,8 @@ public class LevelCotroller : MonoBehaviour
     ArrayList moveableComponents = new ArrayList();
     public float[] additionalData = {};
     
+    GameObject saveAnimationCanvas;
+    GameObject saveAnimationInstance;
     void Start()
     {
         // Vytvo?ení grafu z informací zadaných do LevelController
@@ -207,6 +209,7 @@ public class LevelCotroller : MonoBehaviour
                 moveableComponents.Add(saveMoveable[i].gameObject);
             }
         }
+        saveAnimationCanvas = Resources.Load ("SaveLoading/LoadingAnimation") as GameObject;
         load();
         InvokeRepeating("save", 20, 20);
     }
@@ -230,6 +233,7 @@ public class LevelCotroller : MonoBehaviour
     }
     
     public void save(){
+        saveAnimationInstance =  Instantiate (saveAnimationCanvas);
         TransformSerializable positionRotationSerialize(GameObject input){
             Transform tr = input.transform;
             TransformSerializable returnVal = new TransformSerializable(tr.localPosition.x, tr.localPosition.y, tr.localPosition.z,
@@ -283,6 +287,7 @@ public class LevelCotroller : MonoBehaviour
         //print("Game Saved to " + Directory.GetCurrentDirectory().ToString() + "/Saves/" + GlobalVariables.saveName + ".bin");
         Debug.Log("Game saved");
         }
+        StartCoroutine(saveAnimation());
     }
 
     public void load(){
@@ -330,5 +335,10 @@ public class LevelCotroller : MonoBehaviour
 
             loadFile.Close();
         }
+    }
+    IEnumerator saveAnimation()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Destroy(saveAnimationInstance);
     }
 }
