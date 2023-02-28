@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialConnections : MonoBehaviour
 {
     [Header("Special connection")]
-    public string name = "voluntairly";
+    public string conName = "voluntairly";
     public GameObject firstEndPoint;
     public GameObject secondEndPoint;
     public int idSpojeni;

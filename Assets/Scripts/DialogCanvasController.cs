@@ -17,6 +17,7 @@ public class DialogCanvasController : MonoBehaviour
     int readingProgress = 0;
 
     public void activate(){
+        textComponent.SetText(dialog[0]);
         StartCoroutine(appearCanvas(duration));
     }
     void Start()
@@ -61,8 +62,8 @@ public class DialogCanvasController : MonoBehaviour
             readingProgress++;
             StartCoroutine(FadeOut(duration/2f, textComponent, dialog[readingProgress]));
         }else{
-            StartCoroutine(vanishCanvas(duration));
             readingProgress = 0;
+            StartCoroutine(vanishCanvas(duration));
         }
     }
     public IEnumerator FadeIn(float t, TMP_Text i)

@@ -35,7 +35,7 @@ public class MoveableController : MonoBehaviour
     public float distanceX;
     public float distanceY;
 
-    bool isThere = false;
+    //bool isThere = false;
     Player plSc;
     // Start is called before the first frame update
     void Start()
@@ -49,7 +49,7 @@ public class MoveableController : MonoBehaviour
         {
             if(Player.currentPlayerPoint == najdiPoint(buttons[i]))
             {
-                isThere = true;
+                //isThere = true;
                 GameObject.Find("Player").transform.SetParent(transform);
                 break;
             }
@@ -74,7 +74,7 @@ public class MoveableController : MonoBehaviour
     {
         sliding = false;
         GameObject.Find("Player").transform.SetParent(plSc.parent.transform);
-        isThere = false;
+        //isThere = false;
     }
     // Update is called once per frame
     void Update()

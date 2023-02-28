@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    public static string[] sceneNames;
+    public static string[] sceneNames = {"lvl. retez"};
     public static string saveName = "savedGame";
     public static string savedirectoryName = "Saves";
 

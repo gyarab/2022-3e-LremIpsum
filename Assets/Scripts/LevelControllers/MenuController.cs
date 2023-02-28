@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject camera;
+    public GameObject cam;
     private Vector3 vel = Vector3.zero;
     public SwipeController ct;
     public float speed = 0.5f;
@@ -27,12 +27,12 @@ public class MenuController : MonoBehaviour
         }
         Vector3 shift = new Vector3(-ct.horizontalDrag * sensitivity, 0, 0);
         // Boundaries test
-        if(camera.transform.position.x <= minX && ct.horizontalDrag > 0){
+        if(cam.transform.position.x <= minX && ct.horizontalDrag > 0){
             shift = Vector3.zero;
         }
-        if(camera.transform.position.x >= maxX && ct.horizontalDrag < 0){
+        if(cam.transform.position.x >= maxX && ct.horizontalDrag < 0){
             shift = Vector3.zero;
         }
-        camera.transform.position = Vector3.SmoothDamp(camera.transform.position, camera.transform.position + shift, ref vel, sp);
+        cam.transform.position = Vector3.SmoothDamp(cam.transform.position, cam.transform.position + shift, ref vel, sp);
     }
 }
