@@ -35,12 +35,18 @@ public class MoveableController : MonoBehaviour
     public float distanceX;
     public float distanceY;
 
+    float shift = 0;
     //bool isThere = false;
     Player plSc;
+    SoundManager sm = null;
+    AudioSource audioS;
     // Start is called before the first frame update
     void Start()
     {
         plSc = GameObject.Find("Player").GetComponent<Player>();
+        sm = SoundManager.getManager();
+        audioS = gameObject.AddComponent<AudioSource>() as AudioSource;
+        audioS.spatialBlend = 1;
     }
     public void interactionStarted()
     {
@@ -79,6 +85,13 @@ public class MoveableController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Sound design
+        if(sm != null && shift > sm.distBtSounds){
+            audioS.PlayOneShot(sm.getRandomClickingSound(),sm.clickingVolume);
+            shift = 0;
+        }
+
+        // Moving the component
         if (interacting)
         {
             if (vertical)
@@ -87,6 +100,7 @@ public class MoveableController : MonoBehaviour
                 
                 if(newPosition.y > pointsY[0] && newPosition.y < pointsY[pointsY.Length-1])
                 {
+                    shift += Vector3.Distance(newPosition, transform.position);
                     transform.position = newPosition;
                 }
             }
@@ -96,6 +110,7 @@ public class MoveableController : MonoBehaviour
 
                 if (newPosition.x > pointsX[0] && newPosition.x < pointsX[pointsX.Length - 1])
                 {
+                    shift += Vector3.Distance(newPosition, transform.position);
                     transform.position = newPosition;
                 }
             }
@@ -105,6 +120,7 @@ public class MoveableController : MonoBehaviour
 
                 if (newPosition.z > pointsZ[0] && newPosition.z < pointsZ[pointsZ.Length - 1])
                 {
+                    shift += Vector3.Distance(newPosition, transform.position);
                     transform.position = newPosition;
                 }
             }
@@ -112,6 +128,7 @@ public class MoveableController : MonoBehaviour
             {
                 Quaternion rot = transform.rotation*Quaternion.Euler(0, (-distanceX * speedOfRotation), 0);
                 transform.rotation = rot;
+                shift += Mathf.Abs(-distanceX * speedOfRotation)/60;
             }
         }
         if (afterInteraction)
@@ -215,8 +232,9 @@ public class MoveableController : MonoBehaviour
                 else
                 {
                     Vector3 velocity = Vector3.zero;
-                    transform.position = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, goal, transform.position.z), ref velocity, 0.125f);
-
+                    Vector3 newPos = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, goal, transform.position.z), ref velocity, 0.125f);
+    	            shift += Vector3.Distance(newPos, transform.position);
+                    transform.position = newPos;
                 }
             }
             if (horizontalX)
@@ -228,8 +246,9 @@ public class MoveableController : MonoBehaviour
                 else
                 {
                     Vector3 velocity = Vector3.zero;
-                    transform.position = Vector3.SmoothDamp(transform.position, new Vector3(goal, transform.position.y, transform.position.z), ref velocity, 0.125f);
-
+                    Vector3 newPos = Vector3.SmoothDamp(transform.position, new Vector3(goal, transform.position.y, transform.position.z), ref velocity, 0.125f);
+                    shift += Vector3.Distance(newPos, transform.position);
+                    transform.position = newPos;
                 }
             }
             if (horizontalZ)
@@ -241,8 +260,9 @@ public class MoveableController : MonoBehaviour
                 else
                 {
                     Vector3 velocity = Vector3.zero;
-                    transform.position = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, transform.position.y, goal), ref velocity, 0.125f);
-
+                    Vector3 newPos = Vector3.SmoothDamp(transform.position, new Vector3(transform.position.x, transform.position.y, goal), ref velocity, 0.125f);
+                    shift += Vector3.Distance(newPos, transform.position);
+                    transform.position = newPos;
                 }
             }
             if (horizontalRotation)
@@ -255,6 +275,7 @@ public class MoveableController : MonoBehaviour
                 {
                     Vector3 velocity = Vector3.zero;
                     Quaternion rot = Quaternion.Euler(transform.rotation.eulerAngles.x, goal, transform.rotation.z);
+                    shift += Mathf.Abs(Quaternion.Slerp(transform.rotation, rot, speedOfSlidingRotation * Time.deltaTime).eulerAngles.y - transform.rotation.eulerAngles.y)/40;
                     transform.rotation = Quaternion.Slerp(transform.rotation, rot, speedOfSlidingRotation * Time.deltaTime);
                 }
             }

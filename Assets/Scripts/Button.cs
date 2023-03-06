@@ -14,7 +14,7 @@ public class Button : MonoBehaviour
 
     void clicked()
     {
-        // Pokud je tøeba, zjisti kdo jsi
+        // Pokud je tøeba, zjisti, kdo jsi
         if (point == null)
         {
             for (int k = 0; k < Player.mapa.Count; k++)
@@ -26,6 +26,13 @@ public class Button : MonoBehaviour
                 }
             }
         }
+        // Try to play a sound
+        SoundManager sm = SoundManager.getManager();
+        if(sm != null){
+            sm.playClick();
+        }
+
+        // Spawn a circle
         Instantiate(click, transform.position + transform.up.normalized * 0.01f, transform.rotation);
         //Debug.Log("click");
         Player.najdiCestu(point);

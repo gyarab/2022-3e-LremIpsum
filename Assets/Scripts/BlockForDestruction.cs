@@ -9,7 +9,8 @@ public class BlockForDestruction : MonoBehaviour
     public float minVzdaloenost = 2;
     GameObject player;
     bool isInRange = false;
-    GameObject btCanvas;
+    [Header("btCanvas neměnit")]
+    public GameObject btCanvas;
     GameObject button;
     CanvasGroup btCanGr;
     Camera cam;

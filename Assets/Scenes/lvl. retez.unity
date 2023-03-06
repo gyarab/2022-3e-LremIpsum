@@ -4902,6 +4902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idOkolnosti: 0
   minVzdaloenost: 2
+  btCanvas: {fileID: 0}
   maxOpacity: 0.7
 --- !u!65 &1133214301
 BoxCollider:
@@ -5190,6 +5191,7 @@ GameObject:
   - component: {fileID: 1254321455}
   - component: {fileID: 1254321454}
   - component: {fileID: 1254321456}
+  - component: {fileID: 1254321457}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -5311,6 +5313,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotate: {fileID: 2547820308617658764}
   slider: {fileID: 2923194370022074415}
+--- !u!114 &1254321457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254321453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12161d07f77b9e24ca7e5566037e6199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTheme: {fileID: 8300000, guid: 6f967dc584c6a194a915789cef9b4614, type: 3}
+  useClickingSoundWhenMoveing: 1
+  clickingMoveableObjects:
+  - {fileID: 8300000, guid: 8e54b2844217c544cb4bd3877c5684d3, type: 3}
+  - {fileID: 8300000, guid: 762ce600f34db294fb2c44ec16c31dfc, type: 3}
+  - {fileID: 8300000, guid: 1a92027b64eb64642a68a2ed35c95c9d, type: 3}
+  - {fileID: 8300000, guid: f96437f379156524880df16823a3a744, type: 3}
+  - {fileID: 8300000, guid: 50fe505a6398f1e4da035a828b653cdb, type: 3}
+  - {fileID: 8300000, guid: aaf06734320bc9445a3f1faadb778bd3, type: 3}
+  distBtSounds: 0.1
+  clickingVolume: 20
+  soundsOnClick:
+  - {fileID: 8300000, guid: 8e54b2844217c544cb4bd3877c5684d3, type: 3}
+  - {fileID: 8300000, guid: 762ce600f34db294fb2c44ec16c31dfc, type: 3}
+  - {fileID: 8300000, guid: 1a92027b64eb64642a68a2ed35c95c9d, type: 3}
+  - {fileID: 8300000, guid: f96437f379156524880df16823a3a744, type: 3}
+  - {fileID: 8300000, guid: 50fe505a6398f1e4da035a828b653cdb, type: 3}
+  - {fileID: 8300000, guid: aaf06734320bc9445a3f1faadb778bd3, type: 3}
+  volumeOfClicks: 60
 --- !u!1 &1281313410
 GameObject:
   m_ObjectHideFlags: 0

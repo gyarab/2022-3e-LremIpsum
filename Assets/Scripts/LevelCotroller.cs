@@ -97,6 +97,7 @@ public class LevelCotroller : MonoBehaviour
 
     public bool autoSave = true;
     ArrayList moveableComponents = new ArrayList();
+    ArrayList blocksForDestruction = new ArrayList();
     public float[] additionalData = {};
     
     GameObject saveAnimationCanvas;
@@ -208,6 +209,10 @@ public class LevelCotroller : MonoBehaviour
             for(int i = 0;i < saveMoveable.Length;i++){
                 moveableComponents.Add(saveMoveable[i].gameObject);
             }
+            BlockForDestruction[] blocksForDestructionList = GameObject.FindObjectsOfType<BlockForDestruction>();
+            for(int i = 0;i < blocksForDestructionList.Length;i++){
+                blocksForDestruction.Add(blocksForDestructionList[i].gameObject);
+            }
         }
         saveAnimationCanvas = Resources.Load ("SaveLoading/LoadingAnimation") as GameObject;
         load();
@@ -271,9 +276,16 @@ public class LevelCotroller : MonoBehaviour
             for(int i = 0;i < moveableComponents.Count;i++){
                 moveableComponentsPosition[i] = positionRotationSerialize((GameObject)moveableComponents[i]);
             }
+            bool[] destryedBlocks = new bool[blocksForDestruction.Count];
+            for(int i = 0; i < blocksForDestruction.Count;i++){
+                //print(blocksForDestruction[i]);
+                if(((GameObject)blocksForDestruction[i]) == null){
+                    destryedBlocks[i] = true;
+                }
+            }
 
             SaveData saveData = new SaveData(sceneName,playerPosition,currPlayerPosId,idOkolnosti,
-                    cameraPosition,moveableComponentsPosition,additionalData);
+                    cameraPosition,moveableComponentsPosition,destryedBlocks,additionalData);
 
             if (!Directory.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName))
             Directory.CreateDirectory(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName);
@@ -310,9 +322,24 @@ public class LevelCotroller : MonoBehaviour
             IDOkolnosti = loadData.idOkolnosti;
             setTransform(GameObject.Find("Main Camera"), loadData.cameraPosition);
             // Seting position of moveable compnents
-            for(int i = 0;i<loadData.moveableComponentsPosition.Length;i++){
+            try{
+                for(int i = 0;i<loadData.moveableComponentsPosition.Length;i++){
                 setTransform((GameObject)moveableComponents[i], loadData.moveableComponentsPosition[i]);
+                }
+            }catch{
+                print("Chyba, nesedí seznam pohyblivých ?ástí");
             }
+            try{
+                for(int i = 0;i<loadData.destroyedBlocks.Length;i++){
+                    if(loadData.destroyedBlocks[i]){
+                        Destroy(((BlockForDestruction)((GameObject)blocksForDestruction[i]).GetComponent<BlockForDestruction>()).btCanvas);
+                        Destroy((GameObject)blocksForDestruction[i]);
+                    }
+                }
+            }catch{
+                print("Chyba, nesedí seznam ?ástí k destrukci");
+            }
+            
             additionalData = loadData.extra;
             
             // Print all of the data
