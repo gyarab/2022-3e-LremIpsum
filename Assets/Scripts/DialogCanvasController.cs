@@ -58,6 +58,8 @@ public class DialogCanvasController : MonoBehaviour
         canvasGroup.alpha = 0f;
     }
     public void click(){
+        // Play click sound
+        SoundManager.playClickIfPossible();
         if(readingProgress+1 < dialog.Length){
             readingProgress++;
             StartCoroutine(FadeOut(duration/2f, textComponent, dialog[readingProgress]));

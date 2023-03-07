@@ -27,6 +27,8 @@ public class TlacitkoAnimace : MonoBehaviour
     void TaskOnClick()
     {
         anim.Play("Click");
+        // PLaysound
+        SoundManager.playClickIfPossible();
         StartCoroutine(loadScene());
         StartCoroutine(fadeToBlack());
     }

@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3871a20e90ace3942bdec49bb3d4e28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 895551523}
+  cam: {fileID: 895551523}
   ct: {fileID: 2141886207}
   speed: 0.5
   sensitivity: 3

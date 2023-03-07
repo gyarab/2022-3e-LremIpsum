@@ -25,7 +25,7 @@ public class BlockForDestruction : MonoBehaviour
         btCanvas = Resources.Load ("DestroyObjectUI/DestroyObjectUI") as GameObject;
         btCanvas = Instantiate(btCanvas);
         button = btCanvas.transform.GetChild(0).gameObject;
-        print(button);
+        //print(button);
         btCanGr = btCanvas.GetComponent<CanvasGroup>();
         cam = Camera.main.GetComponent<Camera>();
         btScript = button.GetComponent<UnityEngine.UI.Button>();
@@ -67,6 +67,8 @@ public class BlockForDestruction : MonoBehaviour
         }
     }
     void click(){
+        // Play click sound
+        SoundManager.playClickIfPossible();
         print("destroy object");
         StartCoroutine(FadeOut(0.3f));
         StartCoroutine(DestroyObj(0.5f));
