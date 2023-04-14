@@ -79,7 +79,10 @@ public class MoveableController : MonoBehaviour
     void endOfInteraction()
     {
         sliding = false;
-        GameObject.Find("Player").transform.SetParent(plSc.parent.transform);
+        if(plSc.parent != null){
+            GameObject.Find("Player").transform.SetParent(plSc.parent.transform);
+        }
+        
         //isThere = false;
     }
     // Update is called once per frame

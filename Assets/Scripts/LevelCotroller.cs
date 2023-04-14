@@ -12,7 +12,7 @@ public class Point
     public int id;
     public GameObject button = null;
     public bool navstiveno = false;
-    public int idSpecalny = -1; // -1 -> Nejedná se o specální
+    public int idSpecalny = -1; // -1 -> Nejednï¿½ se o specï¿½lnï¿½
     public ArrayList cesta;
     public Point(GameObject butt)
     {
@@ -71,21 +71,21 @@ public class SpecialConnection
 }
 public class LevelCotroller : MonoBehaviour
 {
-    // Vstupní data z inspektoru
-    [Header("Místo, kde se objeví hr? po na?tení levelu")]
+    // Vstupnï¿½ data z inspektoru
+    [Header("Mï¿½sto, kde se objevï¿½ hr? po na?tenï¿½ levelu")]
     [Space]
     public GameObject playerPosition;
 
-    [Header("Seznam dlaždic jako tla?ítek")]
+    [Header("Seznam dlaï¿½dic jako tla?ï¿½tek")]
     [Space]
-    [Header("Konec smy?ky se ozn?í vložením prázdného elementu do pole.")]
+    [Header("Konec smy?ky se ozn?ï¿½ vloï¿½enï¿½m prï¿½zdnï¿½ho elementu do pole.")]
     public GameObject[] buttons;
 
     [Header("Odkaz na GameObject se skripty SpecialConnections pro tento level")]
     [Space]
     public GameObject specialConnectionsManager;
 
-    [Header("ID spojení na které odkazuje skript SpecialConnection:")]
+    [Header("ID spojenï¿½ na kterï¿½ odkazuje skript SpecialConnection:")]
     public bool[] IDOkolnosti;
 
     ArrayList points = new ArrayList();
@@ -93,7 +93,7 @@ public class LevelCotroller : MonoBehaviour
 
     // Saving level data variables
     [Space]
-    [Header("Ukládání progresu ve h?e")]
+    [Header("Uklï¿½dï¿½nï¿½ progresu ve h?e")]
 
     public bool autoSave = true;
     ArrayList moveableComponents = new ArrayList();
@@ -104,17 +104,17 @@ public class LevelCotroller : MonoBehaviour
     GameObject saveAnimationInstance;
     void Start()
     {
-        // Vytvo?ení grafu z informací zadaných do LevelController
+        // Vytvo?enï¿½ grafu z informacï¿½ zadanï¿½ch do LevelController
         GameObject pre = null;
         for (int i = 0; i < buttons.Length; i++)
         {
-            // Jsme na konci úseku ?etìzce?
+            // Jsme na konci ï¿½seku ?etï¿½zce?
             if (buttons[i] == null)
             {
                 pre = null;
                 continue;
             }
-            // M?me již toto tlaè?tko zaregistrovan??
+            // M?me jiï¿½ toto tlaï¿½?tko zaregistrovan??
             Point p = null;
             for (int j = 0; j < points.Count; j++)
             {
@@ -122,10 +122,10 @@ public class LevelCotroller : MonoBehaviour
                 {
                     p = (Point)points[j];
                     break;
-                    // Ano, m?me a odkaz je v promìnn? p
+                    // Ano, m?me a odkaz je v promï¿½nn? p
                 }
             }
-            // Když nem?me, p?id?me do seznamu
+            // Kdyï¿½ nem?me, p?id?me do seznamu
             if (p == null)
             {
                 points.Add(new Point(buttons[i]));
@@ -203,7 +203,7 @@ public class LevelCotroller : MonoBehaviour
             }
         }
 
-        // Získání dat pro ukládání a na?ítání levelu
+        // Zï¿½skï¿½nï¿½ dat pro uklï¿½dï¿½nï¿½ a na?ï¿½tï¿½nï¿½ levelu
         if(autoSave){
             MoveableController[] saveMoveable = GameObject.FindObjectsOfType<MoveableController>();
             for(int i = 0;i < saveMoveable.Length;i++){
@@ -231,7 +231,11 @@ public class LevelCotroller : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
                 if (Physics.Raycast(ray, out hit))
                 {
-                   hit.transform.gameObject.SendMessage("clicked");
+                    try{
+                        hit.transform.gameObject.SendMessage("clicked");
+                    }catch{
+                        
+                    }
                 }
             }
         }
@@ -251,10 +255,10 @@ public class LevelCotroller : MonoBehaviour
             LevelCotroller lc = (LevelCotroller)Object.FindObjectOfType(typeof(LevelCotroller));
             GameObject camera = GameObject.Find("Main Camera");
             
-            // -------------    Data, která se budou ukládat
-            // Název levelu, ve kterém se hrá? nyní nachází
+            // -------------    Data, kterï¿½ se budou uklï¿½dat
+            // Nï¿½zev levelu, ve kterï¿½m se hrï¿½? nynï¿½ nachï¿½zï¿½
             string sceneName = SceneManager.GetActiveScene().name;
-            // Hrá?
+            // Hrï¿½?
             TransformSerializable playerPosition = positionRotationSerialize(player);
             //GameObject playerParent = playerScript.parent;
             Point currPos = Player.currentPlayerPoint;
@@ -327,7 +331,7 @@ public class LevelCotroller : MonoBehaviour
                 setTransform((GameObject)moveableComponents[i], loadData.moveableComponentsPosition[i]);
                 }
             }catch{
-                print("Chyba, nesedí seznam pohyblivých ?ástí");
+                print("Chyba, nesedï¿½ seznam pohyblivï¿½ch ?ï¿½stï¿½");
             }
             try{
                 for(int i = 0;i<loadData.destroyedBlocks.Length;i++){
@@ -337,7 +341,7 @@ public class LevelCotroller : MonoBehaviour
                     }
                 }
             }catch{
-                print("Chyba, nesedí seznam ?ástí k destrukci");
+                print("Chyba, nesedï¿½ seznam ?ï¿½stï¿½ k destrukci");
             }
             
             additionalData = loadData.extra;
