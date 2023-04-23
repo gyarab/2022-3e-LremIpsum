@@ -35,7 +35,11 @@ public class Button : MonoBehaviour
         // Spawn a circle
         Instantiate(click, transform.position + transform.up.normalized * 0.01f, transform.rotation);
         //Debug.Log("click");
-        Player.najdiCestu(point);
+        if(point != null){
+            Player.najdiCestu(point);
+        }else{
+            Debug.Log("point nenalezen");
+        }        
     }
 
 

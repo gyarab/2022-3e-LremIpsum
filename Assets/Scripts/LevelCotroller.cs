@@ -96,6 +96,8 @@ public class LevelCotroller : MonoBehaviour
     [Header("Ukl�d�n� progresu ve h?e")]
 
     public bool autoSave = true;
+
+    public bool homeButton = true;
     ArrayList moveableComponents = new ArrayList();
     ArrayList blocksForDestruction = new ArrayList();
     public float[] additionalData = {};
@@ -213,10 +215,14 @@ public class LevelCotroller : MonoBehaviour
             for(int i = 0;i < blocksForDestructionList.Length;i++){
                 blocksForDestruction.Add(blocksForDestructionList[i].gameObject);
             }
+            saveAnimationCanvas = Resources.Load ("SaveLoading/LoadingAnimation") as GameObject;
+            load();
+            InvokeRepeating("save", 20, 20);
         }
-        saveAnimationCanvas = Resources.Load ("SaveLoading/LoadingAnimation") as GameObject;
-        load();
-        InvokeRepeating("save", 20, 20);
+        if(homeButton){
+            GameObject homeButtonPrefab = Resources.Load ("HomeButton/HomeButton") as GameObject;
+            GameObject homeButtonObj = Instantiate(homeButtonPrefab);
+        }
     }
 
     // Test kliknut?
@@ -242,7 +248,6 @@ public class LevelCotroller : MonoBehaviour
     }
     
     public void save(){
-        saveAnimationInstance =  Instantiate (saveAnimationCanvas);
         TransformSerializable positionRotationSerialize(GameObject input){
             Transform tr = input.transform;
             TransformSerializable returnVal = new TransformSerializable(tr.localPosition.x, tr.localPosition.y, tr.localPosition.z,
@@ -250,6 +255,7 @@ public class LevelCotroller : MonoBehaviour
             return returnVal;
         }
         if(autoSave){
+            saveAnimationInstance =  Instantiate (saveAnimationCanvas);
             GameObject player = GameObject.Find("Player");
             Player playerScript = (Player)player.gameObject.GetComponent("Player");
             LevelCotroller lc = (LevelCotroller)Object.FindObjectOfType(typeof(LevelCotroller));
@@ -307,6 +313,10 @@ public class LevelCotroller : MonoBehaviour
     }
 
     public void load(){
+        if(GlobalVariables.loadFromSave == false){
+            GlobalVariables.loadFromSave = true;
+            return;
+        }
         void setTransform(GameObject obj, TransformSerializable tr){
             obj.transform.localEulerAngles = new Vector3(tr.rx, tr.ry, tr.rz);
             obj.transform.localPosition = new Vector3(tr.px, tr.py, tr.pz);

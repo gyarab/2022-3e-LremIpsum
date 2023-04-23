@@ -10,6 +10,9 @@ public class GlobalVariables : MonoBehaviour
     public static string[] sceneNames = {"lvl. retez"};
     public static string saveName = "savedGame";
     public static string savedirectoryName = "Saves";
+    public static string menuSceneName = "Menu 2";
+
+    public static bool loadFromSave = true;
 
     // Start is called before the first frame update
     void Start()
