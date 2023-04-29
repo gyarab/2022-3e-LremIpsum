@@ -34,5 +34,25 @@ public class MenuController : MonoBehaviour
             shift = Vector3.zero;
         }
         cam.transform.position = Vector3.SmoothDamp(cam.transform.position, cam.transform.position + shift, ref vel, sp);
+
+        // Raycasting
+        RaycastHit hit = new RaycastHit();
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase.Equals(TouchPhase.Began))
+            {
+                // Construct a ray from the current touch coordinates
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    try{
+                        hit.transform.gameObject.SendMessage("clicked");
+                    }catch{
+                        
+                    }
+                }
+            }
+        }
     }
+    
 }

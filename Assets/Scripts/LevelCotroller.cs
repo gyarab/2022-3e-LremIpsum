@@ -327,7 +327,10 @@ public class LevelCotroller : MonoBehaviour
             FileStream loadFile = File.Open(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin", FileMode.Open);
 
             SaveData loadData = (SaveData) formatter.Deserialize(loadFile);
-
+            if(loadData.sceneName != SceneManager.GetActiveScene().name){
+                Debug.Log("Uložená scéna se neshoduje s názvem oevřené scény");
+                return;
+            }
             // Setting the data to the game
             setTransform(GameObject.Find("Player"), loadData.playerPosition);
             if(loadData.idOfPointPlayerIsStandingOn != -1){

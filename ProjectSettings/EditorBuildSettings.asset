@@ -17,12 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2. level.unity
     guid: d06a6a27c9cdd6045bc0aa78bf4cb13b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/1. level.unity
     guid: 253be70ec9e0c7147aa609969e0fdde1
   - enabled: 1
     path: Assets/Scenes/lvl. podzemi.unity
     guid: 3f6f26800cd98a444b5f2b4497b6f40b
+  - enabled: 1
+    path: Assets/Scenes/Trojuhelniky.unity
+    guid: 7e364f0242bcb154b87265c452207826
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 38eced8b6a5f5154eb3e645b7eaa20fe,
       type: 2}
