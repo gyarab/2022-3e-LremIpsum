@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Pillars.unity
     guid: 1830ddc05feaf0a4aabe29533d5086df
   - enabled: 1
+    path: Assets/Scenes/pustina.unity
+    guid: e355c10ec03de0f4f80cbddf9706136f
+  - enabled: 1
     path: Assets/Scenes/lvl. podzemi.unity
     guid: 3f6f26800cd98a444b5f2b4497b6f40b
   - enabled: 1
