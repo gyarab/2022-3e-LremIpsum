@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/lvl. retez.unity
     guid: 514ed5941e594214795e51624ea8bcb2
   - enabled: 1
+    path: Assets/Scenes/Pillars.unity
+    guid: 1830ddc05feaf0a4aabe29533d5086df
+  - enabled: 1
     path: Assets/Scenes/lvl. podzemi.unity
     guid: 3f6f26800cd98a444b5f2b4497b6f40b
   - enabled: 1
