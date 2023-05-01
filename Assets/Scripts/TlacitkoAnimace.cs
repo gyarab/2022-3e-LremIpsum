@@ -11,6 +11,7 @@ public class TlacitkoAnimace : MonoBehaviour
     public UnityEngine.UI.Button bt;
     public GameObject animovany;
     private Animator anim;
+    public string setScene = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,10 @@ public class TlacitkoAnimace : MonoBehaviour
     IEnumerator loadScene()
     {
         yield return new WaitForSeconds(0.8f);
+        if(setScene!= "")
+        {
+            SceneManager.LoadScene(setScene);
+        }
         if(System.IO.File.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
             GlobalVariables.load();
         }else{
