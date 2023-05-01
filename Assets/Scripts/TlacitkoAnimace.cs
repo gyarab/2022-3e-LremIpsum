@@ -44,10 +44,10 @@ public class TlacitkoAnimace : MonoBehaviour
         {
             SceneManager.LoadScene(setScene);
         }
-        if(System.IO.File.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
+        if(setScene== "" && System.IO.File.Exists(Application.persistentDataPath+"/"+ GlobalVariables.savedirectoryName + "/" + GlobalVariables.saveName + ".bin")){
             GlobalVariables.load();
         }else{
-            SceneManager.LoadScene(GlobalVariables.sceneNames[0]);
+            SceneManager.LoadScene(GlobalVariables.menuSceneName);
         }
         
     }

@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 0859a6cb2e26bd849b9c8009398f7124
+  - enabled: 1
+    path: Assets/Scenes/Rozhovor.unity
+    guid: 7427f847dcc33c84dbda43894d0af0d0
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 38eced8b6a5f5154eb3e645b7eaa20fe,
       type: 2}
