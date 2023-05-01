@@ -4223,7 +4223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087374571}
   m_LocalRotation: {x: 0.00000016539381, y: 0.9999317, z: -0.0000005503947, w: 0.01169562}
-  m_LocalPosition: {x: 84.74031, y: 112.46215, z: 141.86372}
+  m_LocalPosition: {x: 84.7, y: 112.5, z: 142.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4770,120 +4770,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133013905}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1133214299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1133214304}
-  - component: {fileID: 1133214303}
-  - component: {fileID: 1133214302}
-  - component: {fileID: 1133214301}
-  - component: {fileID: 1133214300}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1133214300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133214299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbf31b14a2914804d909a990ea7aafb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idOkolnosti: 0
-  minVzdaloenost: 2
-  btCanvas: {fileID: 0}
-  maxOpacity: 0.7
---- !u!65 &1133214301
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133214299}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1133214302
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133214299}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a4184c669b45d5547a66d8b601aaa364, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1133214303
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133214299}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1133214304
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1133214299}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.008533968, y: 0.04328757, z: 0.012663675}
-  m_LocalScale: {x: 0.0065862522, y: 0.0065862546, z: 0.0065862522}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8737936388428006841}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142681323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,6 +4981,7 @@ GameObject:
   - component: {fileID: 1254321454}
   - component: {fileID: 1254321456}
   - component: {fileID: 1254321457}
+  - component: {fileID: 1254321458}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -5228,7 +5115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12161d07f77b9e24ca7e5566037e6199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTheme: {fileID: 8300000, guid: 6f967dc584c6a194a915789cef9b4614, type: 3}
+  levelTheme: {fileID: 0}
   useClickingSoundWhenMoveing: 1
   clickingMoveableObjects:
   - {fileID: 8300000, guid: 8e54b2844217c544cb4bd3877c5684d3, type: 3}
@@ -5247,6 +5134,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 50fe505a6398f1e4da035a828b653cdb, type: 3}
   - {fileID: 8300000, guid: aaf06734320bc9445a3f1faadb778bd3, type: 3}
   volumeOfClicks: 60
+--- !u!114 &1254321458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254321453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfedbf8fd5a6e8e4ba3fbb55ac42372b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfNextScene: 
+  posledniDlazdice: {fileID: 1087374571}
 --- !u!1 &1279843874
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,7 +8278,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 4.83
+  near clip plane: 5.1
   far clip plane: 63.25
   field of view: 60
   orthographic: 1
@@ -9908,6 +9809,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624174196792949614, guid: 9a5231867eca22544a6bf53a0068785d,
+        type: 3}
       propertyPath: dialog.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -10333,7 +10239,6 @@ Transform:
   m_Children:
   - {fileID: 923736322}
   - {fileID: 282518757}
-  - {fileID: 1133214304}
   - {fileID: 1601398563}
   m_Father: {fileID: 0}
   m_RootOrder: 4
