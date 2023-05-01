@@ -8,6 +8,7 @@ public class CameraMovement : MonoBehaviour
     [Space]
     [Header("Bloky, po kterých se bude kamera pohybovat s hráèem horizontálnì:")]
     public GameObject[] horizontalsObj;
+    public bool applyToWholeLevel = false;
     [Space]
     [Header("Bloky, po kterých se bude kamera pohybovat s hráèem vertikálnì:")]
     public GameObject[] verticalsObj;
@@ -66,7 +67,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (active == true)
         {
-            if (standingOn(horizontals))
+            if (applyToWholeLevel || standingOn(horizontals))
             {
                 Vector3 desiredPosition = new Vector3(transform.position.x, transform.position.y, (GameObject.Find("Player").transform.position.z + offsetZ));
                 Vector3 velocity = Vector3.zero;
